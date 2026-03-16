@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Прогноз погоды на 7 дней</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        .coordinates {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        .forecast-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .weather-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .weather-card h3 {
+            margin: 0 0 10px 0;
+            color: #333;
+        }
+        .date {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+        .temperature {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #007bff;
+            margin: 10px 0;
+        }
+        .description {
+            color: #555;
+            margin-top: 10px;
+        }
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            color: #007bff;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Прогноз погоды на 7 дней</h1>
+    <div class="coordinates">
+        Координаты: {{ latitude }}°N, {{ longitude }}°E
+    </div>
+    
+    <div class="forecast-container">
+        {% for day in forecast %}
+        <div class="weather-card">
+            <h3>День {{ loop.index }}</h3>
+            <div class="date">{{ day.date }}</div>
+            <div class="temperature">
+                {{ day.temp_max }}°C / {{ day.temp_min }}°C
+            </div>
+            <div class="description">{{ day.description }}</div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <a href="/" class="back-link">← На главную</a>
+</body>
+</html>
