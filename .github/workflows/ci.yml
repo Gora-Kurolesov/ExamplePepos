@@ -27,4 +27,5 @@ jobs:
     - name: Run tests
       run: |
         cd weather-flask-app
-        python tests/test_app.py
+        # Запускаем тестовый файл напрямую (без pytest)
+        python tests/test_basic.py
